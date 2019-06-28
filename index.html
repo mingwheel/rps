@@ -5,29 +5,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
   <link rel="stylesheet" href="style.css">
   <script src="index.js"></script>
   <script>
-  document.addEventListener('DOMContentLoaded', () => { game.init(); }); 
+    document.addEventListener('DOMContentLoaded', () => { game.init(); }); 
   </script>
   <title>Rock Paper Scissors</title>
 </head>
 
 <body>
-  <h1>Rock, Paper, Scissors!</h1>
-  <div id="computer">
-    <h2>Computer: <span class="score">0</span></h2>
-    <i class="rock far fa-hand-rock"></i>
-    <i class="paper far fa-hand-paper"></i>
-    <i class="scissors far fa-hand-scissors"></i>
-  </div>
+  <div class="container">
+    <div class="title">
+      <h1>Rock, Paper, Scissors!</h1>
+      <select name="" id="">
+        <option value="">Number of Rounds</option>
+        <option value="">3</option>
+        <option value="">5</option>
+        <option value="">7</option>
+        <option value="">9</option>
+      </select>
+      <button id="reset">Restart</button>
+    </div>
 
-  <div id="player">
-    <h2>You: <span class="score">0</span></h2>
-    <i class="rock far fa-hand-rock"></i>
-    <i class="paper far fa-hand-paper"></i>
-    <i class="scissors far fa-hand-scissors"></i>
+    <div id="computer">
+      <h2>Computer</h2>
+      <i class="rock far fa-hand-rock"></i>
+      <i class="paper far fa-hand-paper"></i>
+      <i class="scissors far fa-hand-scissors"></i>
+    </div>
+    <div class="computer score">0</div>
+    
+    <div id="player">
+      <h2>You</h2>
+      <i class="rock far fa-hand-rock"></i>
+      <i class="paper far fa-hand-paper"></i>
+      <i class="scissors far fa-hand-scissors"></i>
+    </div>
+    <div class="player score">0</div>
   </div>
 
 </body>
