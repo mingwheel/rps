@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="index.js"></script>
   <script>
-  document.addEventListener('DOMContentLoaded', () => { init(); }); 
+  document.addEventListener('DOMContentLoaded', () => { game.init(); }); 
   </script>
   <title>Rock Paper Scissors</title>
 </head>
@@ -17,12 +17,14 @@
 <body>
   <h1>Rock, Paper, Scissors!</h1>
   <div id="computer">
+    <h2>Computer: <span class="score">0</span></h2>
     <i class="rock far fa-hand-rock"></i>
     <i class="paper far fa-hand-paper"></i>
     <i class="scissors far fa-hand-scissors"></i>
   </div>
 
   <div id="player">
+    <h2>You: <span class="score">0</span></h2>
     <i class="rock far fa-hand-rock"></i>
     <i class="paper far fa-hand-paper"></i>
     <i class="scissors far fa-hand-scissors"></i>

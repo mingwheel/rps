@@ -1,3 +1,7 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 h1, div {
   text-align: center;
 }
@@ -5,3 +9,22 @@ h1, div {
 i {
   font-size: 100px;
 }
+
+.score {
+  transition: opacity 0.3s;
+}
+
+.draw {
+  color: orange;
+}
+.win {
+  color: green;
+}
+.lose {
+  color: red;
+}
+
+#player i {
+  cursor: pointer;
+}
+
