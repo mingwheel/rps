@@ -1,5 +1,5 @@
 const game = {
-  rounds: 5,
+  rounds: 3,
   scores: [0, 0], // [computer, player]
   options: {
     rock: 0,
@@ -12,7 +12,10 @@ const game = {
   init() {
     const playerChoices = document.querySelectorAll("#player i");
     const computerChoices = document.querySelectorAll("#computer i");
-    const scores = document.querySelectorAll(".score");
+    const scores = [...document.querySelectorAll(".score")];
+    const resetButton = document.querySelector("#resetButton");
+    const roundSelect = document.querySelector("#rounds");
+    const resultDisplay = document.querySelector("h1");
 
     playerChoices.forEach(choice => {
       choice.onmouseover = () => { if (!game.isRunning) choice.classList.add("fas") };
@@ -27,11 +30,13 @@ const game = {
         const computerSelection = game.computerPlay();
 
         const result = game.match(playerSelection, computerSelection);
-        if (result) game.updateScores(result, scores);
-        game.updateDisplay(this, computerChoices[computerSelection], result);
-
+        if (result) game.updateScores(scores, result);
+        game.updateDisplay(this, computerChoices[computerSelection], result, resultDisplay);
       });
     });
+
+    resetButton.addEventListener("click", game.reset(scores, roundSelect, resultDisplay));
+    roundSelect.addEventListener("change", game.reset(scores, roundSelect, resultDisplay));
   },
 
   match(player, computer) {
@@ -56,23 +61,40 @@ const game = {
     }
   },
 
-  reset() {
-    game.playerScore = game.computerScore = 0;
-    game.init();
+  reset(scores, rounds, resultDisplay) {
+    return function () {
+      game.hasEnded = false;
+      game.rounds = Number(rounds.value);
+      game.scores = [0, 0];
+      game.updateScores(scores);
+      scores.map(score => { score.style.color = "#292C2F" });
+      resultDisplay.textContent = "Rock, Paper, Scissors!"
+    }
   },
 
-  updateScores(winner, scores) {
-    if (winner < 0) winner = 0;
-
-    scores[winner].style.opacity = 0;
-    setTimeout(() => {
-      scores[winner].textContent = game.scores[winner];
-      scores[winner].style.opacity = 1;
-    }, 300);
+  updateScores(scores, winner) {
+    if (winner === undefined) {
+      scores.forEach(score => {
+        score.style.opacity = 0;
+        setTimeout(() => {
+          score.textContent = 0;
+          score.style.opacity = 1;
+        }, 300);
+      });
+    } else {
+      if (winner < 0) winner = 0;
+      scores[winner].style.opacity = 0;
+      setTimeout(() => {
+        scores[winner].textContent = game.scores[winner];
+        scores[winner].style.opacity = 1;
+        if (game.scores[winner] === game.rounds) {
+          scores[winner].style.color = "green";
+        }
+      }, 300);
+    }
   },
 
-  updateDisplay(player, computer, result) {
-    const resultDisplay = document.querySelector("h1");
+  updateDisplay(player, computer, result, resultDisplay) {
     if (game.hasEnded) {
       outcome = (game.scores.indexOf(game.rounds) > 0) ? 'win' : 'lose'
       resultDisplay.textContent = `You ${outcome}!`

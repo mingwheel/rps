@@ -6,8 +6,12 @@ body {
   margin: 0;
 }
 h1 {
+  display: flex;
   line-height: 3rem;
+  height: 25vh;
   margin: 0;
+  align-items: center;
+  justify-content: center;
 }
 h1, div {
   text-align: center;
@@ -17,15 +21,24 @@ h2 {
   margin: 0 0 1rem 0;
 }
 
+p {
+  margin: 1rem 0 0.5rem 0;
+}
+
 i {
   font-size: 6rem;
   padding: 1rem;
 }
 
 select {
+  cursor: pointer;
   font-size: 0.8rem;
   text-align: center;
   text-align-last: center;
+}
+
+select:focus {
+  outline: none;
 }
 
 .container {
@@ -44,11 +57,12 @@ select {
 }
 
 div .title {
-  justify-content: center;
+  display: flex;
+  justify-content: space-around;
   align-content: center;
   order: 2;
-  height: 100vh;
-  width: 10rem;
+  height: 50vh;
+  width: 25vh;
 }
 
 .score.computer {
@@ -59,6 +73,7 @@ div .title {
 }
 
 .score {
+  color: #292C2F;
   width: 10rem;
   font-size: 8rem;
   transition: opacity 0.3s;
@@ -82,3 +97,25 @@ div .title {
   cursor: pointer;
 }
 
+#resetButton {
+  color: #292C2F;
+  cursor: pointer;
+  padding: 0.5em;
+  margin-top: 3rem;
+  background-color: #f2f2f2;
+  border: 1px solid #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#resetButton:hover {
+  border: 1px solid #dddddd;
+  background-color: #f0f0f0;
+}
+#resetButton:focus {
+  outline: none;
+}
+#resetButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
