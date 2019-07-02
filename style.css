@@ -62,7 +62,7 @@ div .title {
   align-content: center;
   order: 2;
   height: 50vh;
-  width: 25vh;
+  min-width: 25vh;
 }
 
 .score.computer {
@@ -74,7 +74,7 @@ div .title {
 
 .score {
   color: #292C2F;
-  width: 10rem;
+  min-width: 10rem;
   font-size: 8rem;
   transition: opacity 0.3s;
 }
